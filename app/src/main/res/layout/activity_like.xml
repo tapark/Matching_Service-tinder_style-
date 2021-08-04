@@ -14,6 +14,64 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/ic_baseline_local_fire_department_24"
+        android:backgroundTint="@color/pink"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/undoImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.8"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:src="@drawable/ic_baseline_undo_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thumbDownImage"/>
+
+    <ImageView
+        android:id="@+id/thumbDownImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:alpha="0.8"
+        android:src="@drawable/ic_baseline_thumb_down_alt_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/undoImage"/>
+
+    <ImageView
+        android:id="@+id/redoImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0.8"
+        app:layout_constraintVertical_bias="0.95"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:src="@drawable/ic_baseline_redo_24"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/thumbUpImage"/>
+
+    <ImageView
+        android:id="@+id/thumbUpImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="10dp"
+        android:alpha="0.8"
+        android:src="@drawable/ic_baseline_thumb_up_alt_24"
+        app:layout_constraintTop_toBottomOf="@id/redoImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.yuyakaido.android.cardstackview.CardStackView
         android:id="@+id/cardStackView"
         android:layout_width="0dp"
@@ -26,18 +84,23 @@
     <Button
         android:id="@+id/matchedListButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="매칭보기"
-        app:layout_constraintWidth_percent="0.3"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintWidth_percent="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/thumbDownImage"
+        app:layout_constraintBottom_toBottomOf="@id/thumbDownImage"/>
 
     <Button
         android:id="@+id/signOutButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="로그아웃"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:layout_margin="10dp"
         app:layout_constraintWidth_percent="0.3"
         app:layout_constraintTop_toTopOf="parent"

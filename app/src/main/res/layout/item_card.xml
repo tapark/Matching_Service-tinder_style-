@@ -7,7 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.5"
@@ -18,24 +20,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/imageConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="#4CAF50">
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_baseline_person_24"
+                android:background="@color/gray"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
                 android:id="@+id/nameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="40sp"
-                tools:text="name"/>
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="name" />
 
-        </LinearLayout>
-
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

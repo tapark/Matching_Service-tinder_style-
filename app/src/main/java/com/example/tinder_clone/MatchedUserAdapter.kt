@@ -3,10 +3,12 @@ package com.example.tinder_clone
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class MatchedUserAdapter: ListAdapter<CardItem, MatchedUserAdapter.ViewHolder>(diffUtil) {
 
@@ -14,6 +16,11 @@ class MatchedUserAdapter: ListAdapter<CardItem, MatchedUserAdapter.ViewHolder>(d
 
         fun bind(cardItem: CardItem) {
             view.findViewById<TextView>(R.id.yourName).text = cardItem.name
+            val imageView = view.findViewById<ImageView>(R.id.imageView)
+            Glide.with(imageView)
+                .load(cardItem.url)
+                .centerCrop()
+                .into(imageView)
         }
     }
 

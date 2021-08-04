@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.app.ActivityCompat
 import androidx.core.widget.addTextChangedListener
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -82,17 +83,8 @@ class LoginActivity: AppCompatActivity() {
 
     private fun initSignUpButton() {
         signUpButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this, "이미 가입된 이메일입니다.", Toast.LENGTH_SHORT).show()
-                    }
-                }
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -100,13 +92,11 @@ class LoginActivity: AppCompatActivity() {
         emailEditText.addTextChangedListener {
             val enable = emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()
             loginButton.isEnabled = enable
-            signUpButton.isEnabled = enable
         }
 
         passwordEditText.addTextChangedListener {
             val enable = emailEditText.text.isNotEmpty() && passwordEditText.text.isNotEmpty()
             loginButton.isEnabled = enable
-            signUpButton.isEnabled = enable
         }
     }
 
@@ -152,7 +142,10 @@ class LoginActivity: AppCompatActivity() {
         finish()
     }
 
-
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this)
+    }
 
 }
 

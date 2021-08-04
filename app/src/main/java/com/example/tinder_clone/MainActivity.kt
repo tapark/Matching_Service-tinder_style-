@@ -13,15 +13,9 @@ class MainActivity : AppCompatActivity() {
 
     private val auth: FirebaseAuth = FirebaseAuth.getInstance() // = Firebase.auth
 
-    private val logoutButton: Button by lazy {
-        findViewById<Button>(R.id.logoutButton)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        initLogoutButton()
 
     }
 
@@ -35,15 +29,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LikeActivity::class.java)
             startActivity(intent)
             finish()
-        }
-    }
-
-    private fun initLogoutButton() {
-        logoutButton.setOnClickListener {
-            auth.signOut()
-            LoginManager.getInstance().logOut()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
         }
     }
 }

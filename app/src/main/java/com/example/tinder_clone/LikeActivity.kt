@@ -1,5 +1,6 @@
 package com.example.tinder_clone
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.solver.widgets.analyzer.Direct
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.core.view.marginStart
 import androidx.core.view.setPadding
 import com.facebook.login.LoginManager
@@ -65,6 +68,11 @@ class LikeActivity: AppCompatActivity(), CardStackListener {
         initCardStackView()
         initSignOutButton()
         initMatchedListButton()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        ActivityCompat.finishAffinity(this)
     }
 
     private fun initSignOutButton() {
@@ -159,10 +167,14 @@ class LikeActivity: AppCompatActivity(), CardStackListener {
 
                     val userId = snapshot.child("userId").value.toString()
                     var name = "undefined"
+                    var url = ""
                     if (snapshot.child("name").value != null) {
                         name = snapshot.child("name").value.toString()
                     }
-                    val cardItem = CardItem(userId, name)
+                    if (snapshot.child("url").value != null) {
+                        url = snapshot.child("url").value.toString()
+                    }
+                    val cardItem = CardItem(userId, name, url)
                     cardItemList.add(cardItem)
 
                     adapter.submitList(cardItemList)
